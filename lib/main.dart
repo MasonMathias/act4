@@ -99,3 +99,16 @@ class BasicShapesPainter extends CustomPainter {
     }
   }
 }
+
+class CombinedShapesPainter extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+    final centerX = size.width / 2;
+    final centerY = size.height / 2;
+
+    @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) {
+    return false;
+    }
+  }
+}
