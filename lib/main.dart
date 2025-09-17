@@ -170,16 +170,45 @@ class PartyPainter extends CustomPainter {
 class HeartPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
-    // Determine the center of the canvas
     final centerX = size.width / 2;
     final centerY = size.height / 2;
+    final heartSize = 100.0;
+
+    final heartPaint = Paint()
+      ..color = Colors.red
+      ..style = PaintingStyle.fill;
+
+    // Radius of the circles (top lobes)
+    final radius = heartSize / 2;
+
+    // Left circle
+    canvas.drawCircle(
+      Offset((centerX - radius) + 3, (centerY - radius) - 15),
+      radius,
+      heartPaint,
+    );
+
+    // Right circle
+    canvas.drawCircle(
+      Offset((centerX + radius) - 3, (centerY - radius) - 15),
+      radius,
+      heartPaint,
+    );
+
+    // Triangle (bottom point of heart)
+    final path = Path()
+      ..moveTo((centerX - radius * 3) + 55, centerY - radius) // left corner
+      ..lineTo((centerX + radius * 3) - 55, centerY - radius) // right corner
+      ..lineTo(centerX, centerY + radius + 40) // bottom tip
+      ..close();
+
+    canvas.drawPath(path, heartPaint);
   }
 
   @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) {
-    return false;
-  }
+  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
 }
+
 
 class AngryPainter extends CustomPainter {
   @override
