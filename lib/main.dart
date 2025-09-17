@@ -94,65 +94,42 @@ class BasicShapesPainter extends CustomPainter {
     // Determine the center of the canvas
     final centerX = size.width / 2;
     final centerY = size.height / 2;
-    final squareOffset = Offset(centerX - 80, centerY);
     final circleOffset = Offset(centerX, centerY);
-    final arcOffset = Offset(centerX + 80, centerY);
-    final rectOffset = Offset(centerX - 160, centerY);
-    final lineStart = Offset(centerX - 200, centerY - 50);
-    final lineEnd = Offset(centerX - 140, centerY + 50);
-    final ovalOffset = Offset(centerX + 160, centerY);
+    final rightEyeOffset = Offset(centerX - 20, centerY - 10);
+    final leftEyeOffset = Offset(centerX + 20, centerY - 10);
+    final smileOffset = Offset(centerX, centerY + 5)
 
-    // Draw a square
-    final squarePaint = Paint()
-      ..color = Colors.blue
+    // Draw a head
+    final circlePaint = Paint()
+      ..color = const Color.fromARGB(255, 230, 226, 16)
       ..style = PaintingStyle.fill;
-    canvas.drawRect(
-      Rect.fromCenter(center: squareOffset, width: 60, height: 60),
-      squarePaint,
+    canvas.drawCircle(circleOffset, 50, circlePaint);
+
+    // Draw the eyes
+    final ovalPaint = Paint()
+      ..color = const Color.fromARGB(255, 31, 17, 0)
+      ..style = PaintingStyle.fill;
+    canvas.drawOval(
+      Rect.fromCenter(center: rightEyeOffset, width: 10, height: 20),
+      ovalPaint,
+    );
+    canvas.drawOval(
+      Rect.fromCenter(center: leftEyeOffset, width: 10, height: 20),
+      ovalPaint,
     );
 
-    // Draw a circle
-    final circlePaint = Paint()
-      ..color = Colors.red
-      ..style = PaintingStyle.fill;
-    canvas.drawCircle(circleOffset, 30, circlePaint);
-
-    // Draw an arc
+    // Draw the smile
     final arcPaint = Paint()
-      ..color = Colors.green
+      ..color = const Color.fromARGB(255, 31, 17, 0)
       ..style = PaintingStyle.stroke
       ..strokeWidth = 5;
     canvas.drawArc(
-      Rect.fromCenter(center: arcOffset, width: 60, height: 60),
+      Rect.fromCenter(center: smileOffset, width: 20, height: 10),
       0, // start angle in radians
       2.1, // sweep angle in radians (about 120 degrees)
-      false, // whether to use center
-      arcPaint,
-    );
-
-    // Draw a rectangle
-    final rectPaint = Paint()
-      ..color = Colors.orange
-      ..style = PaintingStyle.fill;
-    canvas.drawRect(
-      Rect.fromCenter(center: rectOffset, width: 80, height: 40),
-      rectPaint,
-    );
-
-    // Draw a line
-    final linePaint = Paint()
-      ..color = Colors.purple
-      ..strokeWidth = 3;
-    canvas.drawLine(lineStart, lineEnd, linePaint);
-
-    // Draw an oval
-    final ovalPaint = Paint()
-      ..color = Colors.teal
-      ..style = PaintingStyle.fill;
-    canvas.drawOval(
-      Rect.fromCenter(center: ovalOffset, width: 80, height: 40),
-      ovalPaint,
-    );
+      false, // whether to use center 
+      arcPaint
+      );
   }
 
   @override
