@@ -78,3 +78,24 @@ class ShapesDemoScreen extends StatelessWidget {
     );
   }
 }
+
+class BasicShapesPainter extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+    // Determine the center of the canvas
+    final centerX = size.width / 2;
+    final centerY = size.height / 2;
+    final squareOffset = Offset(centerX - 80, centerY);
+    final circleOffset = Offset(centerX, centerY);
+    final arcOffset = Offset(centerX + 80, centerY);
+    final rectOffset = Offset(centerX - 160, centerY);
+    final lineStart = Offset(centerX - 200, centerY - 50);
+    final lineEnd = Offset(centerX - 140, centerY + 50);
+    final ovalOffset = Offset(centerX + 160, centerY);
+
+    @override
+    bool shouldRepaint(covariant CustomPainter oldDelegate) {
+      return false;
+    }
+  }
+}
