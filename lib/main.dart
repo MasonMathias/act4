@@ -83,7 +83,7 @@ class _ShapesDemoScreenState extends State<ShapesDemoScreen> {
                       _currentPainter = AngryPainter();
                     });
                   },
-                  child: const Text("Random"),
+                  child: const Text("Angry"),
                 ),
               ],
             ),
