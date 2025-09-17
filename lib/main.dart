@@ -64,7 +64,7 @@ class _ShapesDemoScreenState extends State<ShapesDemoScreen> {
                 ElevatedButton(
                   onPressed: () {
                     setState(() {
-                      _currentPainter = SmileyPainter();
+                      _currentPainter = PartyPainter();
                     });
                   },
                   child: const Text("Party"),
@@ -72,7 +72,7 @@ class _ShapesDemoScreenState extends State<ShapesDemoScreen> {
                 ElevatedButton(
                   onPressed: () {
                     setState(() {
-                      _currentPainter = SmileyPainter();
+                      _currentPainter = HeartPainter();
                     });
                   },
                   child: const Text("Heart"),
@@ -80,7 +80,7 @@ class _ShapesDemoScreenState extends State<ShapesDemoScreen> {
                 ElevatedButton(
                   onPressed: () {
                     setState(() {
-                      _currentPainter = SmileyPainter();
+                      _currentPainter = AngryPainter();
                     });
                   },
                   child: const Text("Random"),
@@ -145,7 +145,7 @@ class SmileyPainter extends CustomPainter {
   }
 }
 
-class partyPainter extends CustomPainter {
+class PartyPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     // Determine the center of the canvas
@@ -167,7 +167,7 @@ class partyPainter extends CustomPainter {
   }
 }
 
-class heartPainter extends CustomPainter {
+class HeartPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     // Determine the center of the canvas
