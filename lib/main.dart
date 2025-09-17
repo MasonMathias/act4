@@ -11,7 +11,7 @@ class ShapesDemoApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Shapes Drawing Demo',
+      title: 'Emoji Selector',
       theme: ThemeData(
         primarySwatch: Colors.blue,
         useMaterial3: true,
@@ -21,6 +21,31 @@ class ShapesDemoApp extends StatelessWidget {
   }
 }
 
+class ShapesDemoScreen extends StatelessWidget {
+  const ShapesDemoScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+
+      appBar: AppBar(
+        title: const Text('Emoji Selector'),
+      ),
+
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            
+          ]
+        ),
+      ),
+    );
+  }
+}
+
+/*
 class ShapesDemoScreen extends StatelessWidget {
   const ShapesDemoScreen({super.key});
 
@@ -309,3 +334,4 @@ class StyledShapesPainter extends CustomPainter {
     return false;
   }
 }
+*/
