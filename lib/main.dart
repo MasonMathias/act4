@@ -11,7 +11,7 @@ class ShapesDemoApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Shapes Drawing Demo',
+      title: 'Emoji Selector',
       theme: ThemeData(
         primarySwatch: Colors.blue,
         useMaterial3: true,
@@ -29,7 +29,7 @@ class ShapesDemoScreen extends StatelessWidget {
     return Scaffold(
 
       appBar: AppBar(
-        title: const Text('Shapes Drawing Demo'),
+        title: const Text('Emoji Selector'),
       ),
 
       body: SingleChildScrollView(
