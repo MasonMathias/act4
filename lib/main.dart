@@ -133,10 +133,22 @@ class SmileyPainter extends CustomPainter {
     canvas.drawArc(
       Rect.fromCenter(center: smileOffset, width: 20, height: 10),
       0, // start angle in radians
-      2.1, // sweep angle in radians (about 120 degrees)
+      pi, // sweep angle in radians (about 120 degrees)
       false, // whether to use center 
       arcPaint
       );
+
+    // Draw the party hat
+    final hatPaint = Paint()
+      ..color = Colors.pink
+      ..style = PaintingStyle.fill;
+    final Path hatPath = Path()
+      ..moveTo(centerX, centerY - 50 - 30) // tip of hat
+      ..lineTo(centerX - 20 / 2, centerY - 50) // bottom-left
+      ..lineTo(centerX + 20 / 2, centerY - 50) // bottom-right
+      ..close();
+
+    
   }
 
   @override
@@ -152,6 +164,9 @@ class PartyPainter extends CustomPainter {
     final centerX = size.width / 2;
     final centerY = size.height / 2;
     final circleOffset = Offset(centerX, centerY);
+    final rightEyeOffset = Offset(centerX - 20, centerY - 10);
+    final leftEyeOffset = Offset(centerX + 20, centerY - 10);
+    final smileOffset = Offset(centerX, centerY + 5);
 
     // Draw a head
     final circlePaint = Paint()
@@ -159,6 +174,31 @@ class PartyPainter extends CustomPainter {
       ..style = PaintingStyle.fill;
     canvas.drawCircle(circleOffset, 50, circlePaint);
 
+    // Draw the eyes
+    final ovalPaint = Paint()
+      ..color = const Color.fromARGB(255, 31, 17, 0)
+      ..style = PaintingStyle.fill;
+    canvas.drawOval(
+      Rect.fromCenter(center: rightEyeOffset, width: 10, height: 20),
+      ovalPaint,
+    );
+    canvas.drawOval(
+      Rect.fromCenter(center: leftEyeOffset, width: 10, height: 20),
+      ovalPaint,
+    );
+
+    // Draw the smile
+    final arcPaint = Paint()
+      ..color = const Color.fromARGB(255, 31, 17, 0)
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = 5;
+    canvas.drawArc(
+      Rect.fromCenter(center: smileOffset, width: 20, height: 10),
+      0, // start angle in radians
+      pi, // sweep angle in radians (about 120 degrees)
+      false, // whether to use center 
+      arcPaint
+      );
   }
 
   @override
