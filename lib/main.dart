@@ -11,7 +11,7 @@ class ShapesDemoApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Emoji Selector',
+      title: 'Shapes Drawing Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
         useMaterial3: true,
@@ -21,27 +21,127 @@ class ShapesDemoApp extends StatelessWidget {
   }
 }
 
-class ShapesDemoScreen extends StatelessWidget {
+class ShapesDemoScreen extends StatefulWidget {
   const ShapesDemoScreen({super.key});
+
+  @override
+  State<ShapesDemoScreen> createState() => _ShapesDemoScreenState();
+}
+
+class _ShapesDemoScreenState extends State<ShapesDemoScreen> {
+  CustomPainter _currentPainter = SmileyPainter();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(title: const Text('Shapes Drawing Demo')),
 
-      appBar: AppBar(
-        title: const Text('Emoji Selector'),
-      ),
-
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.all(16.0),
+      body: Center(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            
-          ]
+
+            // Area for emoji to appear in
+            CustomPaint(
+              size: const Size(250, 250),
+              painter: _currentPainter,
+            ),
+
+            const SizedBox(height: 30),
+
+            // Buttons for emojis
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                ElevatedButton(
+                  onPressed: () {
+                    setState(() {
+                      _currentPainter = SmileyPainter();
+                    });
+                  },
+                  child: const Text("Smiley"),
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    setState(() {
+                      _currentPainter = SmileyPainter();
+                    });
+                  },
+                  child: const Text("Party"),
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    setState(() {
+                      _currentPainter = SmileyPainter();
+                    });
+                  },
+                  child: const Text("Heart"),
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    setState(() {
+                      _currentPainter = SmileyPainter();
+                    });
+                  },
+                  child: const Text("Random"),
+                ),
+              ],
+            ),
+          ],
         ),
       ),
     );
+  }
+}
+
+
+class SmileyPainter extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+    // Determine the center of the canvas
+    final centerX = size.width / 2;
+    final centerY = size.height / 2;
+    final circleOffset = Offset(centerX, centerY);
+    final rightEyeOffset = Offset(centerX - 20, centerY - 10);
+    final leftEyeOffset = Offset(centerX + 20, centerY - 10);
+    final smileOffset = Offset(centerX, centerY + 5);
+
+    // Draw a head
+    final circlePaint = Paint()
+      ..color = const Color.fromARGB(255, 230, 226, 16)
+      ..style = PaintingStyle.fill;
+    canvas.drawCircle(circleOffset, 50, circlePaint);
+
+    // Draw the eyes
+    final ovalPaint = Paint()
+      ..color = const Color.fromARGB(255, 31, 17, 0)
+      ..style = PaintingStyle.fill;
+    canvas.drawOval(
+      Rect.fromCenter(center: rightEyeOffset, width: 10, height: 20),
+      ovalPaint,
+    );
+    canvas.drawOval(
+      Rect.fromCenter(center: leftEyeOffset, width: 10, height: 20),
+      ovalPaint,
+    );
+
+    // Draw the smile
+    final arcPaint = Paint()
+      ..color = const Color.fromARGB(255, 31, 17, 0)
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = 5;
+    canvas.drawArc(
+      Rect.fromCenter(center: smileOffset, width: 20, height: 10),
+      0, // start angle in radians
+      2.1, // sweep angle in radians (about 120 degrees)
+      false, // whether to use center 
+      arcPaint
+      );
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) {
+    return false;
   }
 }
 
