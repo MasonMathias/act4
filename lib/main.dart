@@ -145,6 +145,63 @@ class SmileyPainter extends CustomPainter {
   }
 }
 
+class partyPainter extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+    // Determine the center of the canvas
+    final centerX = size.width / 2;
+    final centerY = size.height / 2;
+    final circleOffset = Offset(centerX, centerY);
+
+    // Draw a head
+    final circlePaint = Paint()
+      ..color = const Color.fromARGB(255, 230, 226, 16)
+      ..style = PaintingStyle.fill;
+    canvas.drawCircle(circleOffset, 50, circlePaint);
+
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) {
+    return false;
+  }
+}
+
+class heartPainter extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+    // Determine the center of the canvas
+    final centerX = size.width / 2;
+    final centerY = size.height / 2;
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) {
+    return false;
+  }
+}
+
+class AngryPainter extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+    // Determine the center of the canvas
+    final centerX = size.width / 2;
+    final centerY = size.height / 2;
+    final circleOffset = Offset(centerX, centerY);
+
+    // Draw a head
+    final circlePaint = Paint()
+      ..color = const Color.fromARGB(255, 255, 85, 18)
+      ..style = PaintingStyle.fill;
+    canvas.drawCircle(circleOffset, 50, circlePaint);
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) {
+    return false;
+  }
+}
+
 /*
 class ShapesDemoScreen extends StatelessWidget {
   const ShapesDemoScreen({super.key});
