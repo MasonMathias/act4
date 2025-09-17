@@ -37,6 +37,31 @@ class ShapesDemoScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            
+          ]
+        ),
+      ),
+    );
+  }
+}
+
+/*
+class ShapesDemoScreen extends StatelessWidget {
+  const ShapesDemoScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+
+      appBar: AppBar(
+        title: const Text('Shapes Drawing Demo'),
+      ),
+
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
 
             const Text(
               'Task 1: Basic Shapes',
@@ -332,3 +357,4 @@ class StyledShapesPainter extends CustomPainter {
     return false;
   }
 }
+*/
