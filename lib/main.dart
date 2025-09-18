@@ -137,18 +137,6 @@ class SmileyPainter extends CustomPainter {
       false, // whether to use center 
       arcPaint
       );
-
-    // Draw the party hat
-    final hatPaint = Paint()
-      ..color = Colors.pink
-      ..style = PaintingStyle.fill;
-    final Path hatPath = Path()
-      ..moveTo(centerX, centerY - 50 - 30) // tip of hat
-      ..lineTo(centerX - 20 / 2, centerY - 50) // bottom-left
-      ..lineTo(centerX + 20 / 2, centerY - 50) // bottom-right
-      ..close();
-
-    
   }
 
   @override
@@ -158,6 +146,29 @@ class SmileyPainter extends CustomPainter {
 }
 
 class PartyPainter extends CustomPainter {
+
+  void drawStar(Canvas canvas, Offset center, double radius, Paint paint) {
+    const int points = 5; // function to draw the star for the hat
+    final Path path = Path();
+
+    for (int i = 0; i < points * 2; i++) {
+      // Alternate between outer and inner radius
+      final double r = (i % 2 == 0) ? radius : radius / 2;
+      final double angle = (pi / points) * i - pi / 2; // start at top
+      final double x = center.dx + r * cos(angle);
+      final double y = center.dy + r * sin(angle);
+
+      if (i == 0) {
+        path.moveTo(x, y);
+      } else {
+        path.lineTo(x, y);
+      }
+    }
+
+    path.close();
+    canvas.drawPath(path, paint);
+  }
+
   @override
   void paint(Canvas canvas, Size size) {
     // Determine the center of the canvas
@@ -199,6 +210,28 @@ class PartyPainter extends CustomPainter {
       false, // whether to use center 
       arcPaint
       );
+      
+    // Draw the party hat
+    final hatPaint = Paint()
+      ..color = Colors.pink
+      ..style = PaintingStyle.fill;
+    final Path hatPath = Path()
+      ..moveTo(centerX, centerY - 50 - 30) // tip of hat
+      ..lineTo(centerX - 20 / 2, centerY - 50) // bottom-left
+      ..lineTo(centerX + 20 / 2, centerY - 50) // bottom-right
+      ..close();
+    canvas.drawPath(hatPath, hatPaint);
+
+    // Star at the top of the hat
+    final starPaint = Paint()
+      ..color = Colors.yellow
+      ..style = PaintingStyle.fill;
+    drawStar(
+      canvas,
+      Offset(centerX, centerY - 50 - 30),
+      10, // size of the star
+      starPaint,
+    );
   }
 
   @override
