@@ -257,12 +257,41 @@ class AngryPainter extends CustomPainter {
     final centerX = size.width / 2;
     final centerY = size.height / 2;
     final circleOffset = Offset(centerX, centerY);
+    final rightEyeOffset = Offset(centerX - 20, centerY - 10);
+    final leftEyeOffset = Offset(centerX + 20, centerY - 10);
+    final frownOffset = Offset(centerX, centerY + 5);
 
     // Draw a head
     final circlePaint = Paint()
       ..color = const Color.fromARGB(255, 255, 85, 18)
       ..style = PaintingStyle.fill;
     canvas.drawCircle(circleOffset, 50, circlePaint);
+
+        // Draw the eyes
+    final ovalPaint = Paint()
+      ..color = const Color.fromARGB(255, 31, 17, 0)
+      ..style = PaintingStyle.fill;
+    canvas.drawOval(
+      Rect.fromCenter(center: rightEyeOffset, width: 10, height: 20),
+      ovalPaint,
+    );
+    canvas.drawOval(
+      Rect.fromCenter(center: leftEyeOffset, width: 10, height: 20),
+      ovalPaint,
+    );
+
+    // Draw the smile
+    final arcPaint = Paint()
+      ..color = const Color.fromARGB(255, 31, 17, 0)
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = 5;
+    canvas.drawArc(
+      Rect.fromCenter(center: frownOffset, width: 20, height: 10),
+      0, // start angle in radians
+      pi, // sweep angle in radians (about 120 degrees)
+      false, // whether to use center 
+      arcPaint
+    );
   }
 
   @override
