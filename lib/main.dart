@@ -260,10 +260,18 @@ class AngryPainter extends CustomPainter {
     final leftEyeOffset = Offset(centerX + 20, centerY - 10);
     final frownOffset = Offset(centerX, centerY + 20);
 
-    // Draw a head
+    // Head gradient colors
     final circlePaint = Paint()
-      ..color = const Color.fromARGB(255, 255, 85, 18)
-      ..style = PaintingStyle.fill;
+      ..shader = LinearGradient(
+        begin: Alignment.topCenter,
+        end: Alignment.bottomCenter,
+        colors: [
+          const Color.fromARGB(255, 156, 31, 0),  // darker red (top)
+          const Color.fromARGB(255, 255, 106, 47), // lighter red (bottom)
+        ],
+      ).createShader(Rect.fromCircle(center: circleOffset, radius: 50));
+
+    // Draw the head with gradient
     canvas.drawCircle(circleOffset, 50, circlePaint);
 
     // Draw the eyes
