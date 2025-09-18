@@ -280,7 +280,7 @@ class AngryPainter extends CustomPainter {
       ovalPaint,
     );
 
-    // Draw the smile
+    // Draw the frown
     final arcPaint = Paint()
       ..color = const Color.fromARGB(255, 31, 17, 0)
       ..style = PaintingStyle.stroke
