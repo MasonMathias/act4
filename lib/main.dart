@@ -1,3 +1,5 @@
+// Edison Zheng and Mason Mathias
+
 import 'package:flutter/material.dart';
 import 'dart:math';
 
