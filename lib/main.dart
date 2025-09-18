@@ -249,7 +249,6 @@ class HeartPainter extends CustomPainter {
   bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
 }
 
-
 class AngryPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
@@ -259,7 +258,7 @@ class AngryPainter extends CustomPainter {
     final circleOffset = Offset(centerX, centerY);
     final rightEyeOffset = Offset(centerX - 20, centerY - 10);
     final leftEyeOffset = Offset(centerX + 20, centerY - 10);
-    final frownOffset = Offset(centerX, centerY + 5);
+    final frownOffset = Offset(centerX, centerY + 20);
 
     // Draw a head
     final circlePaint = Paint()
@@ -267,7 +266,7 @@ class AngryPainter extends CustomPainter {
       ..style = PaintingStyle.fill;
     canvas.drawCircle(circleOffset, 50, circlePaint);
 
-        // Draw the eyes
+    // Draw the eyes
     final ovalPaint = Paint()
       ..color = const Color.fromARGB(255, 31, 17, 0)
       ..style = PaintingStyle.fill;
@@ -286,11 +285,31 @@ class AngryPainter extends CustomPainter {
       ..style = PaintingStyle.stroke
       ..strokeWidth = 5;
     canvas.drawArc(
-      Rect.fromCenter(center: frownOffset, width: 20, height: 10),
-      0, // start angle in radians
-      pi, // sweep angle in radians (about 120 degrees)
-      false, // whether to use center 
-      arcPaint
+      Rect.fromCenter(center: frownOffset, width: 30, height: 20),
+      pi, // start angle (180°)
+      pi, // sweep angle (180°)
+      false,
+      arcPaint,
+    );
+
+    // Draw angry eyebrows
+    final browPaint = Paint()
+      ..color = const Color.fromARGB(255, 31, 17, 0)
+      ..strokeWidth = 4
+      ..style = PaintingStyle.stroke;
+
+    // Right eyebrow (slanted down toward center)
+    canvas.drawLine(
+      Offset(centerX - 35, centerY - 30),
+      Offset(centerX - 15, centerY - 20),
+      browPaint,
+    );
+
+    // Left eyebrow (slanted down toward center)
+    canvas.drawLine(
+      Offset(centerX + 15, centerY - 20),
+      Offset(centerX + 35, centerY - 30),
+      browPaint,
     );
   }
 
